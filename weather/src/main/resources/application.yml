@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/weather
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create-drop
+        dialect: org.hibernate.dialect.MySQLDialect
+      show-sql: yes
+API:
+  url: https://api.openweathermap.org/data/2.5/forecast?units=metric&cnt=1&appid=3ab9890e603db3803ca52c1a436bb816&q=
+  novi-sad: Novi Sad
+  malmo: Malmo
+  rethymno: Rethymno
