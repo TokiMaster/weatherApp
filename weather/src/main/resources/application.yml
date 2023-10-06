@@ -6,13 +6,11 @@ spring:
     username: root
     password: root
   jpa:
-    properties:
-      hibernate:
-        ddl-auto: create-drop
-        dialect: org.hibernate.dialect.MySQLDialect
-      show-sql: yes
+    show-sql: yes
+    format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+      dialect: org.hibernate.dialect.MySQLDialect
 API:
   url: https://api.openweathermap.org/data/2.5/forecast?units=metric&cnt=1&appid=3ab9890e603db3803ca52c1a436bb816&q=
-  novi-sad: Novi Sad
-  malmo: Malmo
-  rethymno: Rethymno
+  cities: Novi Sad, Malmo, Rethymno

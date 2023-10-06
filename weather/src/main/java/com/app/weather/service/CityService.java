@@ -16,16 +16,8 @@ public class CityService {
     @Value("${API.url}")
     private String url;
 
-    @Value("${API.novi-sad}")
-    private String noviSad;
-
-    @Value("${API.malmo}")
-    private String malmo;
-
-    @Value("${API.rethymno}")
-    private String rethymno;
-
-    private final String[] cities = {noviSad, malmo, rethymno};
+    @Value("${API.cities}")
+    private String[] cities;
 
     private final RestTemplate restTemplate;
 

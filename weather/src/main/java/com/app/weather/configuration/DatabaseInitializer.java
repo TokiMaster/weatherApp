@@ -6,7 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-    public class DatabaseInitializer implements ApplicationRunner {
+public class DatabaseInitializer implements ApplicationRunner {
 
     private final CityService cityService;
 
@@ -18,4 +18,5 @@ import org.springframework.stereotype.Component;
     public void run(ApplicationArguments args) throws Exception {
         cityService.fetchAndSaveCityInfo();
     }
+
 }
