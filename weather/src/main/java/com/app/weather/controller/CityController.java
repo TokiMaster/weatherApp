@@ -1,6 +1,6 @@
 package com.app.weather.controller;
 
-import com.app.weather.model.City;
+import com.app.weather.dto.CityInfoDTO;
 import com.app.weather.service.CityService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class CityController {
     }
 
     @GetMapping
-    public List<City> findAll() {
+    public List<CityInfoDTO> findAll() {
         return cityService.findAll();
     }
 

@@ -15,14 +15,20 @@ public class City {
 
     private int population;
 
+    private double temperature;
+
+    private String time;
+
     public City() {
     }
 
-    public City(Long id, String name, String country, int population) {
+    public City(Long id, String name, String country, int population, double temperature, String time) {
         this.id = id;
         this.name = name;
         this.country = country;
         this.population = population;
+        this.temperature = temperature;
+        this.time = time;
     }
 
     public Long getId() {
@@ -55,6 +61,22 @@ public class City {
 
     public void setPopulation(int population) {
         this.population = population;
+    }
+
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
 }
