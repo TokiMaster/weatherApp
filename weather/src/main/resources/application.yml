@@ -12,5 +12,5 @@ spring:
       ddl-auto: create-drop
       dialect: org.hibernate.dialect.MySQLDialect
 API:
-  url: https://api.openweathermap.org/data/2.5/forecast?units=metric&cnt=1&appid=3ab9890e603db3803ca52c1a436bb816&q=
+  url: https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=3ab9890e603db3803ca52c1a436bb816&q=
   cities: Novi Sad, Malmo, Rethymno
