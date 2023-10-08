@@ -1,16 +1,15 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    platform: mysql
-    url: jdbc:mysql://localhost:3306/weather
-    username: root
-    password: root
+    url: jdbc:postgresql://localhost:5432/weather
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
   jpa:
     show-sql: yes
     format_sql: true
     hibernate:
       ddl-auto: create-drop
-      dialect: org.hibernate.dialect.MySQLDialect
+      dialect: org.hibernate.dialect.PostgreSQLDialect
 API:
   url: https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=3ab9890e603db3803ca52c1a436bb816&q=
   cities: Novi Sad, Malmo, Rethymno
