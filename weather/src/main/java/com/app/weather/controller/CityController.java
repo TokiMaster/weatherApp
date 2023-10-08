@@ -1,5 +1,6 @@
 package com.app.weather.controller;
 
+import com.app.weather.controller.api.CityControllerApi;
 import com.app.weather.dto.AverageTemperatureInfoDTO;
 import com.app.weather.dto.CityInfoDTO;
 import com.app.weather.service.CityService;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("city")
-public class CityController {
+public class CityController implements CityControllerApi {
 
     private final CityService cityService;
 

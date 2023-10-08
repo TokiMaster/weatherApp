@@ -10,6 +10,9 @@ spring:
     hibernate:
       ddl-auto: create-drop
       dialect: org.hibernate.dialect.PostgreSQLDialect
+springdoc:
+  api-docs:
+    path: /weather-openapi
 API:
   url: https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=3ab9890e603db3803ca52c1a436bb816&q=
   cities: Novi Sad, Malmo, Rethymno
