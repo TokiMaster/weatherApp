@@ -1,15 +1,13 @@
 package com.app.weather.service;
 
 import com.app.weather.dto.AverageTemperatureInfoDTO;
+import com.app.weather.dto.CityApiResponseDTO;
 import com.app.weather.dto.CityDTO;
 import com.app.weather.dto.CityInfoDTO;
-import com.app.weather.dto.TemperatureInfoDTO;
 import com.app.weather.exception.BusinessLogicException;
 import com.app.weather.mapper.CityMapper;
 import com.app.weather.model.City;
-import com.app.weather.dto.CityApiResponseDTO;
 import com.app.weather.repository.CityRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -58,21 +57,22 @@ public class CityService {
                 .toList();
     }
 
-    public List<AverageTemperatureInfoDTO> averageTemperatureInfo(String name, Integer days) {
+    public List<AverageTemperatureInfoDTO> averageTemperatureInfo(String name, Integer days, String sort) {
         if (days == null || (days < 1 || days > 5)){
-            throw new BusinessLogicException("Number of days must be between 1 and 5");
+            throw new BusinessLogicException("Number of days must be a whole number between 1 and 5");
         }
         ArrayList<AverageTemperatureInfoDTO> avgTemp = new ArrayList<>();
         if (name == null) {
             for (String city : cities) {
                 calculateAverageTemperature(days, avgTemp, city);
             }
-        }else if (!Arrays.stream(cities).toList().contains(name)) {
+        } else if (!Arrays.stream(cities).toList().contains(name)) {
             throw new BusinessLogicException(String.format("Citi %s does not exist!", name));
         } else {
             calculateAverageTemperature(days, avgTemp, name);
         }
-        return avgTemp;
+
+        return sort(sort, avgTemp);
     }
 
     private void calculateAverageTemperature(Integer days, ArrayList<AverageTemperatureInfoDTO> avgTemp, String city) {
@@ -91,6 +91,19 @@ public class CityService {
         temperatureInfo.setAverageTemperature(averageTemperature);
         temperatureInfo.setNumberOfDays(days);
         avgTemp.add(temperatureInfo);
+    }
+
+    private List<AverageTemperatureInfoDTO> sort(String sort, List<AverageTemperatureInfoDTO> avgTemp) {
+        if (sort == null) {
+            return avgTemp;
+        } else if ("asc".equalsIgnoreCase(sort)) {
+            avgTemp.sort(Comparator.comparing(AverageTemperatureInfoDTO::getAverageTemperature));
+        } else if ("desc".equalsIgnoreCase(sort)) {
+            avgTemp.sort(Comparator.comparing(AverageTemperatureInfoDTO::getAverageTemperature).reversed());
+        } else {
+            throw new BusinessLogicException(String.format("Invalid argument: %s", sort));
+        }
+        return avgTemp;
     }
 
 }

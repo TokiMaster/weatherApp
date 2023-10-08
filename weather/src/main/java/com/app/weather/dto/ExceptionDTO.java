@@ -1,7 +1,6 @@
 package com.app.weather.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 public class ExceptionDTO implements Serializable {
 
